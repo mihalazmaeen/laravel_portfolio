@@ -41,7 +41,7 @@
                   {{$skill->name}}
                 </th>
                 <td class="px-6 py-4">
-                   {{$skill->logo}}
+                    <img src="{{ asset('storage/'.$skill->logo) }}" class="w-16 h-16 object-cover">
                 </td>
                 <td class="px-6 py-4">
                       {{$skill->rating}}
