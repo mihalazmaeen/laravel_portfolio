@@ -36,6 +36,17 @@
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
             <div class="mt-4">
+                 <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a Skill</label>
+                <select id="skill_id"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="skill_id[]" multiple>
+                     <option selected>Choose a skill</option>
+                    @foreach($skills as $skill)
+                        <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('skills')" class="mt-2" />
+            </div>
+
+            {{-- <div class="mt-4">
                 <x-input-label for="skill" :value="__('Skills')" />
                 <select id="skill_id" class="block mt-1 w-full" name="skill_id[]" multiple>
                     @foreach($skills as $skill)
@@ -43,7 +54,7 @@
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('skills')" class="mt-2" />
-            </div>
+            </div> --}}
 
 
                 <!-- Remember Me -->
