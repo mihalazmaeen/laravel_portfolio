@@ -36,6 +36,16 @@
                     <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"/>
                     <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 </div>
+                <div class="mt-4">
+                    <x-input-label for="skill_id" :value="__('Skill')" />
+                    <select id="skill_id" class="block mt-1 w-full" name="skill_id[]" multiple>
+                        @foreach($skills as $skill)
+                            <option value="{{ $skill->id }}" {{ in_array($skill->id, $project->skill_id) ? 'selected' : '' }}>{{ $skill->name }}</option>
+                        @endforeach
+                    </select>
+                    <x-input-error :messages="$errors->get('skill_id')" class="mt-2" />
+                </div>
+
 
                 <!-- Remember Me -->
           

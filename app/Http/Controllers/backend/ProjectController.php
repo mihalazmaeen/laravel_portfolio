@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Models\Projects;
+use App\Models\Skills;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -15,7 +16,8 @@ class ProjectController extends Controller
         return view('projects.index',compact('projects'));
     }
     public function create(){
-        return view('projects.create');
+        $skills=Skills::cursor();
+        return view('projects.create',compact('skills'));
     }
     public function store(StoreProjectRequest $request){
          if($request->hasFile('image')){
@@ -33,14 +35,15 @@ class ProjectController extends Controller
            return back();
     }
     public function edit(Projects $project){
-        return view('projects.edit',compact('project'));
+           $skills=Skills::cursor();
+        return view('projects.edit',compact('project','skills'));
     }
     public function update(Request $request, Projects $project){
         $request->validate([
             'name' =>['required','min:3'],
             'image'=>['nullable','image'],
             'project_url'=>['nullable'],
-            'project_description'=>['nullable','image'],
+            'project_description'=>['nullable'],
             'skill_id'=>['nullable'],
         ]);
         $image=$project->image;

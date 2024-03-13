@@ -49,14 +49,22 @@
                    {{$project->project_url}}
                 </td>
                 <td class="px-6 py-4">
-                      {{$project->image}}
+              
+                       <img src="{{ asset('storage/'.$project->image) }}" class="w-16 h-16 object-cover">
                 </td>
                 <td class="px-6 py-4">
                    {{$project->project_description}}
                 </td>
-                <td class="px-6 py-4">
-                   {{$project->skill_id}}
-                </td>
+         <td class="px-6 py-4">
+            @foreach($project->skill_id as $skillId)
+                {{ \App\Models\Skills::find($skillId)->name }}
+                @if (!$loop->last)
+                    , 
+                @endif
+            @endforeach
+        </td>
+
+
                 <td class=" justify-start items-center px-6 py-4">
               
                 <a href="{{ route('project.edit', $project->id) }}" class=" font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>

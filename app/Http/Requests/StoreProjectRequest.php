@@ -26,6 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name'=>['required','min:3'],
             'image'=>['required'],
+            'skill_id' => 'array',
 
         ];
     }
